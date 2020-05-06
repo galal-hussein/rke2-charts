@@ -1,0 +1,29 @@
+---
+
+podCidr: "10.244.0.0/16"
+
+flannel:
+  image: quay.io/coreos/flannel
+  imageTag: v0.11.0
+  imagePullPolicy:
+  iface: ""
+  args:
+  - "--ip-masq"
+  - "--kube-subnet-mgr"
+  backend: "vxlan"
+          
+calico:
+  cniImage: calico/cni
+  nodeImage: calico/node
+  flexvolImage: calico/pod2daemon-flexvol
+  imageTag: v3.13.3
+  datastoreType: kubernetes
+  waitForDatastore: true
+  usePodCIDR: true
+  networkingBackend: none
+  clusterType: "k8s,canal"
+  disableFileLogging: true
+  felixIpv6Support: false
+  felixIptablesRefreshInterval: 60
+  felixLogSeverityScreen: info
+  felixHealthEnabled: true
