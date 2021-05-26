@@ -1,0 +1,99 @@
+--- charts-original/values.yaml
++++ charts/values.yaml
+@@ -575,7 +575,13 @@
+     # -- Node tolerations for pod assignment on nodes with taints
+     # ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
+     #
+-    tolerations: []
++    tolerations:
++    - key: "node-role.kubernetes.io/control-plane"
++      operator: "Exists"
++      effect: "NoSchedule"
++    - key: "node-role.kubernetes.io/etcd"
++      operator: "Exists"
++      effect: "NoExecute"
+ 
+     # -- hubble-relay update strategy
+     updateStrategy:
+@@ -695,7 +701,13 @@
+     # -- Node tolerations for pod assignment on nodes with taints
+     # ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
+     #
+-    tolerations: []
++    tolerations: 
++    - key: "node-role.kubernetes.io/control-plane"
++      operator: "Exists"
++      effect: "NoSchedule"
++    - key: "node-role.kubernetes.io/etcd"
++      operator: "Exists"
++      effect: "NoExecute"
+ 
+     # -- hubble-ui update strategy.
+     updateStrategy:
+@@ -992,6 +1004,12 @@
+   # ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
+   #
+   tolerations:
++  - key: "node-role.kubernetes.io/control-plane"
++    operator: "Exists"
++    effect: "NoSchedule"
++  - key: "node-role.kubernetes.io/etcd"
++    operator: "Exists"
++    effect: "NoExecute"
+   - operator: Exists
+     # - key: "key"
+     #   operator: "Equal|Exists"
+@@ -1138,6 +1156,12 @@
+   #
+   tolerations:
+   - operator: Exists
++  - key: "node-role.kubernetes.io/control-plane"
++    operator: "Exists"
++    effect: "NoSchedule"
++  - key: "node-role.kubernetes.io/etcd"
++    operator: "Exists"
++    effect: "NoExecute"
+     # - key: "key"
+     #   operator: "Equal|Exists"
+     #   value: "value"
+@@ -1232,6 +1256,12 @@
+   # ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
+   #
+   tolerations:
++  - key: "node-role.kubernetes.io/control-plane"
++    operator: "Exists"
++    effect: "NoSchedule"
++  - key: "node-role.kubernetes.io/etcd"
++    operator: "Exists"
++    effect: "NoExecute"
+   - operator: Exists
+     # - key: "key"
+     #   operator: "Equal|Exists"
+@@ -1324,6 +1354,12 @@
+     value: "true"
+   - key: CriticalAddonsOnly
+     operator: "Exists"
++  - key: "node-role.kubernetes.io/control-plane"
++    operator: "Exists"
++    effect: "NoSchedule"
++  - key: "node-role.kubernetes.io/etcd"
++    operator: "Exists"
++    effect: "NoExecute"
+     # - key: "key"
+     #   operator: "Equal|Exists"
+     #   value: "value"
+@@ -1439,7 +1475,13 @@
+ 
+     # -- Node tolerations for pod assignment on nodes with taints
+     # ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
+-    tolerations: []
++    tolerations: 
++    - key: "node-role.kubernetes.io/control-plane"
++      operator: "Exists"
++      effect: "NoSchedule"
++    - key: "node-role.kubernetes.io/etcd"
++      operator: "Exists"
++      effect: "NoExecute"
+ 
+     # -- clustermesh-apiserver update strategy
+     updateStrategy:

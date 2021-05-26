@@ -16,6 +16,12 @@ spec:
       tolerations:
       - operator: Exists
         effect: NoSchedule
+      - key: "node-role.kubernetes.io/control-plane"
+        operator: "Exists"
+        effect: "NoSchedule"
+      - key: "node-role.kubernetes.io/etcd"
+        operator: "Exists"
+        effect: "NoExecute"
       serviceAccountName: multus
       initContainers:
       - name: cni-plugins

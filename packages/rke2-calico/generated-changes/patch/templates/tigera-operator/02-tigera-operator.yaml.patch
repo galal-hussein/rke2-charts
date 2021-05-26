@@ -1,6 +1,18 @@
 --- charts-original/templates/tigera-operator/02-tigera-operator.yaml
 +++ charts/templates/tigera-operator/02-tigera-operator.yaml
-@@ -29,7 +29,7 @@
+@@ -23,13 +23,19 @@
+           operator: Exists
+         - effect: NoSchedule
+           operator: Exists
++        - key: "node-role.kubernetes.io/control-plane"
++          operator: "Exists"
++          effect: "NoSchedule"
++        - key: "node-role.kubernetes.io/etcd"
++          operator: "Exists"
++          effect: "NoExecute"
+       serviceAccountName: tigera-operator
+       hostNetwork: true
+       # This must be set when hostNetwork is true or else the cluster services won't resolve
        dnsPolicy: ClusterFirstWithHostNet
        containers:
          - name: tigera-operator
